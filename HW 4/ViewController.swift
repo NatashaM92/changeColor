@@ -25,9 +25,25 @@ class ViewController: UIViewController {
         redLightLabel.text = String(format: "%.2f", redLightSlider.value)
         greenLightLabel.text = String(format: "%.2f", greenLightSlider.value)
         blueLightLabel.text = String(format: "%.2f",blueLightSlider.value)
+        
+        colorView.layer.cornerRadius = 10
+        
+        colorChange()
     }
     
-    func colorChange() {
+    @IBAction func colorChangeSlider(_ sender: UISlider) {
+        colorChange()
+        switch sender {
+        case redLightSlider:
+            redLightLabel.text = String(format: "%.2f", redLightSlider.value)
+        case greenLightSlider:
+            greenLightLabel.text = String(format: "%.2f", greenLightSlider.value)
+        default:
+            blueLightLabel.text = String(format: "%.2f",blueLightSlider.value)
+        }
+    }
+    
+    private func colorChange() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redLightSlider.value),
             green: CGFloat(greenLightSlider.value),
@@ -35,18 +51,19 @@ class ViewController: UIViewController {
             alpha: 1
         )
     }
-
-    @IBAction func redLightSliderAction() {
-        redLightLabel.text = String(format: "%.2f", redLightSlider.value)
-        colorChange()
-    }
-    
-    @IBAction func greenLightSliderAction() {
-        greenLightLabel.text = String(format: "%.2f", greenLightSlider.value)
-    }
-    
-    @IBAction func blueLightSliderAction() {
-        blueLightLabel.text = String(format: "%.2f",blueLightSlider.value)
-    }
+//    @IBAction func redLightSliderAction() {
+//        redLightLabel.text = String(format: "%.2f", redLightSlider.value)
+//        colorChange()
+//
+//
+//    }
+//
+//    @IBAction func greenLightSliderAction() {
+//        greenLightLabel.text = String(format: "%.2f", greenLightSlider.value)
+//    }
+//
+//    @IBAction func blueLightSliderAction() {
+//        blueLightLabel.text = String(format: "%.2f",blueLightSlider.value)
+//    }
 }
 
